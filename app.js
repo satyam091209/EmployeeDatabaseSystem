@@ -12,8 +12,8 @@ const employeeRoutes = require('./routes/employees');
 
 
 // Connecting to mongodb database
-const DATABASE_LOCAL = 'mongodb+srv://Satyam:satyy09@cluster0.j50pohu.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(DATABASE_LOCAL , { 
+const MONGODB_URI = 'mongodb+srv://Satyam:satyy09@cluster0.j50pohu.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(MONGODB_URI , { 
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
