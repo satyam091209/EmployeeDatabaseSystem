@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 
 const path = require('path');
-const dotenv = require('dotenv');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -11,10 +10,18 @@ const bodyParser = require('body-parser');
     
 const employeeRoutes = require('./routes/employees');
 
-dotenv.config({path : './config.env'});
 
 // Connecting to mongodb database
-mongoose.connect(process.env.DATABASE_LOCAL)
+const DATABASE_LOCAL = 'mongodb+srv://Satyam:satyy09@cluster0.j50pohu.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(DATABASE_LOCAL , { 
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useCreateIndex: true 
+  })
+.then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log('Error connecting to MongoDB', err));
+
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -44,7 +51,7 @@ app.use((req, res, next)=> {
 
 app.use(employeeRoutes);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 app.listen(port, ()=> {
     console.log('Server is started.');
 });
