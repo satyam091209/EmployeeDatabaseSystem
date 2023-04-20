@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Employee = require('../models/employee');
+const Employee = require('../models/employee'); 
 
 
 //get routes starts here
@@ -28,7 +28,7 @@ router.get('/employee/search', (req,res)=> {
 
 router.get('/employee', (req,res)=> {
     let searchQuery = {name : req.query.name};
-
+    
     Employee.findOne(searchQuery)
         .then(employee => {
             res.render('search', {employee:employee});

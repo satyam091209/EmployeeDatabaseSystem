@@ -12,13 +12,11 @@ const employeeRoutes = require('./routes/employees');
 
 
 // Connecting to mongodb database
-const MONGODB_URI = 'mongodb+srv://Satyam:satyy09@cluster0.j50pohu.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(MONGODB_URI , { 
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-    useCreateIndex: true 
-  })
+const MONGODB_URI = 'mongodb+srv://Satyam:satyy09@cluster0.j50pohu.mongodb.net/employee?retryWrites=true&w=majority';
+mongoose.connect(MONGODB_URI , {
+  useNewUrlParser: true ,
+  useUnifiedTopology: true
+})
 .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.log('Error connecting to MongoDB', err));
 
